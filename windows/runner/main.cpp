@@ -26,11 +26,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
-  Win32Window::Size size(1280, 720);
-  if (!window.CreateAndShow(L"multi_window_test", origin, size)) {
+  Win32Window::Size size(360, 640);
+  if (!window.CreateAndShow(L"1st window", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);
+
+
+  FlutterWindow window2(project);
+  Win32Window::Point origin2(400, 10);
+  if (!window2.CreateAndShow(L"2nd window", origin2, size)) {
+    return EXIT_FAILURE;
+  }
+  window2.SetQuitOnClose(true);
 
   ::MSG msg;
   while (::GetMessage(&msg, nullptr, 0, 0)) {
